@@ -4,14 +4,15 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import './index.css'
 import ErrorPage from './pages/404.tsx'
-// import Login from './pages/login.tsx'
-// import Register from './pages/register.tsx'
+
 import { Toaster } from 'react-hot-toast'
 // import ProtectedRoute from './components/AuthRoute/ProtectedRoute.tsx'
 // import PublicRoute from './components/AuthRoute/PublicRoute.tsx'
 import HomePage from './App.tsx'
 import CustomerIntakeFormPage from './pages/customerintakeform.tsx'
 import RecruitmentStatusPage from './pages/recruitmentstatus.tsx'
+import Login from './pages/login.tsx'
+import SignupPage from './pages/register.tsx'
 
 const queryClient = new QueryClient()
 const router = createBrowserRouter([
@@ -43,22 +44,22 @@ const router = createBrowserRouter([
     ),
     errorElement: <ErrorPage />,
   },
-  // {
-  //   path: '/login',
-  //   element: (
-  //     <PublicRoute>
-  //       <Login />
-  //     </PublicRoute>
-  //   ),
-  // },
-  // {
-  //   path: '/register',
-  //   element: (
-  //     <PublicRoute>
-  //       <Register />
-  //     </PublicRoute>
-  //   ),
-  // },
+  {
+    path: '/login',
+    element: (
+      // <PublicRoute>
+      <Login />
+      // </PublicRoute>
+    ),
+  },
+  {
+    path: '/register',
+    element: (
+      // <PublicRoute>
+      <SignupPage />
+      // </PublicRoute>
+    ),
+  },
 ])
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
