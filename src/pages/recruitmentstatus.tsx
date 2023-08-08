@@ -16,87 +16,69 @@ import {
   UserAddIcon,
   UserCircleIcon,
 } from '@/utils/Icons'
-// import React from 'react'
-// import { InvoiceTypes } from '../invoice/page'
-// import { getInvoice } from '@/components/InvoiceData'
-// import { redirect } from 'next/navigation'
 
 const recruitmentProcess = [
   {
     id: 1,
-    line1: 'New Agent ',
-    line2: 'Request Submitted',
+    line1: 'New Agent Request Submitted',
+
     completed: true,
   },
   {
     id: 2,
-    line1: 'Processing your  ',
-    line2: 'requirements',
+    line1: 'Processing your requirements',
+
     completed: true,
   },
   {
     id: 3,
-    line1: 'Generating ',
-    line2: 'Ideal Candidate Profiles',
+    line1: 'Generating Ideal Candidate Profiles',
+
     completed: false,
   },
   {
     id: 4,
-    line1: 'Candidate Profiles Ready ',
-    line2: ' for Review!',
+    line1: 'Candidate Profiles Ready for Review! ',
+    line2: ' ',
     completed: false,
   },
   {
     id: 5,
-    line1: 'Review Call',
-    line2: 'CSM: Andrew Stephens',
+    line1: 'Review Call CSM: Andrew Stephens',
+    line2: '',
     completed: false,
   },
   {
     id: 6,
-    line1: 'Review Macros Created',
-    line2: ' by TP',
+    line1: 'Review Macros Created by TP',
+    line2: ' ',
   },
   {
     id: 7,
-    line1: 'Share  ',
-    line2: 'Helpdesk Login/Credential',
+    line1: 'Share Helpdesk Login/Credential',
+    line2: '',
     completed: false,
   },
   {
     id: 8,
-    line1: 'Schedule Live Training',
-    line2: ' for Agent',
+    line1: 'Schedule Live Training for Agent',
+
     completed: false,
   },
   {
     id: 9,
-    line1: 'Share  ',
-    line2: 'Helpdesk Login/Credential',
+    line1: 'Share Helpdesk Login/Credential',
+
     completed: false,
   },
   {
     id: 10,
-    line1: 'Agent Successfully  ',
-    line2: 'Onboarded',
+    line1: 'Agent Successfully Onboarded',
+
     completed: false,
   },
 ]
 const RecruitmentStatusPage = () => {
-  //   const today = Date.now()
-  //   const data: InvoiceTypes = await getInvoice()
-  //   if (data.FirstTimeInvoice.is_payed) {
-  //     if (data.MonthlyInvoice.payment_recurring_date) {
-  //       if (
-  //         new Date(data.MonthlyInvoice.payment_recurring_date) < new Date(today)
-  //       ) {
-  //         redirect('/invoice')
-  //       }
-  //     }
-  //   } else {
-  //     redirect('/invoice')
-  //   }
-
   return (
     <div className=' flex h-full'>
       <div className='relative w-[94px]'>
@@ -146,37 +128,31 @@ const RecruitmentStatusPage = () => {
           <div className=' relative'>
             <ol className='relative   grid grid-cols-10 grid-rows-2  text-sm  font-light text-black'>
               <div className='absolute  top-[50%] h-[2px] w-full bg-[#69C920]' />
-              {recruitmentProcess.map(({ line1, line2 }, index) => (
+              {recruitmentProcess.map(({ line1 }, index) => (
                 <div
                   className={
                     index % 2 == 0
-                      ? 'relative row-span-2 mt-auto '
-                      : 'relative row-span-1 '
+                      ? 'relative row-span-2 mt-auto h-1/2'
+                      : 'relative row-span-1 mb-auto h-full'
                   }
                   key={index}
                 >
                   {index % 2 == 0 ? (
-                    <div>
-                      <div className=' flex flex-col  items-center '>
-                        <div className='absolute'>
-                          <ProgressIconDown />
-                        </div>
+                    <div className=' flex flex-col  items-center '>
+                      <div className=''>
+                        <ProgressIconDown />
                       </div>
-                      <div className='ml-4 mt-2 pt-5 md:ml-0'>
-                        <h4 className='mb-1.5 '>{line1}</h4>
-                        <p className='mb-3'>{line2}</p>
+                      <div className='ml-4 text-center  md:ml-0'>
+                        <h4 className=' '>{line1}</h4>
                       </div>
                     </div>
                   ) : (
-                    <div>
-                      <div className=' flex flex-col items-center '>
-                        <div className='absolute -bottom-[7px] right-5'>
-                          <ProgressIconUp />
-                        </div>
-                        <div className='ml-4 mt-2 pb-4 md:ml-0'>
-                          <h4 className='mb-1.5 '>{line1}</h4>
-                          <p className='mb-3 '>{line2}</p>
-                        </div>
+                    <div className=' flex flex-col justify-end mt-auto items-center h-full '>
+                      <div className='ml-4 text-center   md:ml-0'>
+                        <h4 className=' '>{line1}</h4>
+                      </div>
+                      <div className='flex  items-end'>
+                        <ProgressIconUp />
                       </div>
                     </div>
                   )}

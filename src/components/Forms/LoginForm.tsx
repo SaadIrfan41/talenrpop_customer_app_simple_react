@@ -1,5 +1,4 @@
 import { useState } from 'react'
-// import { useRouter } from "next/navigation";
 import { Form, FormControl, FormField, FormItem, FormMessage } from '../ui/form'
 import { Input } from '../ui/input'
 import { Button } from '../ui/button'
@@ -8,15 +7,13 @@ import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
 import { Loader2 } from 'lucide-react'
-import { toast } from 'react-hot-toast'
+// import { toast } from 'react-hot-toast'
+// import { useLocation, useNavigate } from 'react-router-dom'
 import { loginFormSchema } from '@/lib/validations/auth/authValidations'
-import { useLocation, useNavigate } from 'react-router-dom'
-import { useAuthStore } from '@/store/useAuthStore'
 
 const LoginForm = () => {
-  const { setAccesstoken } = useAuthStore()
-  const navigate = useNavigate()
-  const state = useLocation().state
+  // const navigate = useNavigate()
+  // const state = useLocation().state
 
   const [loading, setloading] = useState(false)
   const form = useForm<z.infer<typeof loginFormSchema>>({
@@ -33,25 +30,6 @@ const LoginForm = () => {
     console.log(values)
     setloading(true)
 
-    const formData = new URLSearchParams()
-    formData.append('username', values.email)
-    formData.append('password', values.password)
-    const res = await fetch('http://18.237.25.116:8000/login', {
-      method: 'POST',
-      body: formData,
-    })
-
-    const data = await res.json()
-    if (data.access_token) {
-      setAccesstoken(data.access_token)
-      navigate(state.from ? state.from : '/')
-    }
-    console.log(data)
-    if (data.detail) {
-      toast.error(data.detail)
-      setloading(false)
-      return
-    }
     // router.push("/");
   }
   return (
